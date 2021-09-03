@@ -17,7 +17,6 @@
             <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
             <Setter Property="UseSystemFocusVisuals" Value="True" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="NavigationViewItem">
@@ -77,13 +76,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
         <Style x:Key="NavigationViewItemPresenterStyleWhenOnLeftPane" TargetType="NavigationViewItemPresenter">
             <Setter Property="Foreground" Value="{ThemeResource NavigationViewItemForeground}" />
             <Setter Property="Background" Value="{ThemeResource NavigationViewItemBackground}" />
             <Setter Property="BorderBrush" Value="{ThemeResource NavigationViewItemBorderBrush}" />
             <Setter Property="BorderThickness" Value="{StaticResource NavigationViewItemBorderThickness}" />
             <Setter Property="UseSystemFocusVisuals" Value="True" />
-
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -93,11 +92,11 @@
                             Height="40"
                             Background="{TemplateBinding Background}"
                             Control.IsTemplateFocusTarget="True">
+                            <!--  Wrap SelectionIndicator in a grid so that its offset is 0,0 - this enables the offset animation.  -->
                             <Grid
                                 Margin="4,0,0,0"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Visibility="Collapsed">
+                                VerticalAlignment="Center">
 
                                 <Rectangle
                                     x:Name="SelectionIndicator"
@@ -116,7 +115,6 @@
                                 <Grid
                                     x:Name="ContentGrid"
                                     Height="40"
-                                    Margin="-10"
                                     HorizontalAlignment="Left">
 
                                     <Grid.ColumnDefinitions>
@@ -142,7 +140,6 @@
 
                                 </Grid>
                             </Border>
-
 
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="PointerStates">
@@ -172,7 +169,7 @@
                                             <Setter Target="RevealBorder.BorderBrush" Value="{ThemeResource NavigationViewItemBorderBrushSelected}" />
                                             <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource NavigationViewItemForegroundSelected}" />
                                             <Setter Target="ContentBorder.BorderBrush" Value="Red" />
-                                            <Setter Target="ContentBorder.BorderThickness" Value="2,2,2,2" />
+                                            <Setter Target="ContentBorder.BorderThickness" Value="0,2,2,2" />
                                         </VisualState.Setters>
                                     </VisualState>
 
@@ -226,5 +223,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
     </Application.Resources>
 </Application>
